@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'com.snreloaded'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.snreloaded.Controller"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+    // https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-client
+    compile group: 'org.jboss.resteasy', name: 'resteasy-client', version: '4.4.2.Final'
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    // https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j
+    compile group: 'net.lingala.zip4j', name: 'zip4j', version: '2.3.1'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+}
